@@ -1,0 +1,10 @@
+mutation image_create($direct_url: String!) {
+  record_create(
+    record: {
+      table: "images"
+      properties: [{ name: "image" value: $direct_url }]
+      }
+  ) {
+    id
+  }
+}

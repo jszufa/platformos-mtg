@@ -1,0 +1,19 @@
+query card_search {
+  records: records(
+    per_page: 100
+    filter: {
+      table: { value: "card" }
+    }
+    sort: {
+      updated_at: { order: DESC }
+    }
+  ) {
+    total_entries
+    results {
+      id
+      name: property(name: "name")
+      colors: property(name: "colors")
+      types: property(name: "types")
+    }
+  }
+}

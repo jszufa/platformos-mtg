@@ -1,0 +1,21 @@
+mutation card_create (
+    $name: String,
+  	$colors: String,
+  	$types: String
+) {
+    record: record_create(
+        record: {
+        table: "card"
+        properties: [
+            {name: "name", value: $name},
+          	{name: "colors", value: $colors},
+          	{name: "types", value: $types},
+        ]
+}
+    ){
+        id
+        name: property(name: "name")
+    	colors: property(name: "colors")
+    	types: property(name: "types")
+    }
+}

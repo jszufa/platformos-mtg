@@ -1,0 +1,10 @@
+mutation card_delete(
+  $id: ID!
+) {
+  record: record_delete(
+    table: "card"
+    id: $id
+  ) {
+    id
+  }
+}

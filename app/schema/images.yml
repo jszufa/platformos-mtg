@@ -1,0 +1,4 @@
+name: images
+properties:
+  - name: image
+    type: upload

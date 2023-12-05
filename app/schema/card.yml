@@ -1,0 +1,8 @@
+name: card
+properties:
+  - name: name
+    type: string
+  - name: colors
+    type: array
+  - name: types
+    type: array

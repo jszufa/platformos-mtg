@@ -1,0 +1,72 @@
+body {
+  max-width: 800px;
+  min-height: 100vh;
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  line-height: 1.7em;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.logo {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+table {
+  border: 1px solid black;
+  padding: 20px 10px;
+  border-collapse: separate;
+}
+
+button {
+  text-transform: uppercase;
+  width: 200px;
+  background-color: rgb(104, 130, 98);
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.delete-btn {
+  background-color: rgb(130, 98, 98);
+  width: 2em;
+  margin: auto;
+}
+
+.container {
+  display: flex;
+  margin: 10px;
+}
+
+table.deck {
+  margin-top: 40px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+table.deck tr {
+  border: 1px solid black;
+}
+
+table.deck td {
+  padding: 5px;
+}
