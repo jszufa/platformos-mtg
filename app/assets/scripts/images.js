@@ -15,7 +15,10 @@ function uploadFile() {
 
             if (!xmlDocument.querySelector("Error")) {
                 const location = xmlDocument.querySelector("Location").textContent;
-                console.log(location)
+                console.log(location);
+
+                //nie może być tak jak poniżej bo to metoda get, a ja chcę post
+                window.location.href = `/app/views/pages/image/create.liquid?location=${location}`;
             }
             else {
                 const errorMessage = xmlDocument.querySelector("Message").textContent;
@@ -24,5 +27,22 @@ function uploadFile() {
         })
         .catch(error => {
             console.error('Error:', error);
+        });
+}
+
+function saveUrl(location) {
+    fetch(`app\views\pages\image\create.liquid?location=${location}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ key: 'value' }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Response:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
         });
 }

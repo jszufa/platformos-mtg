@@ -3,7 +3,7 @@ method: post
 ---
 
 {% liquid
-	graphql result = 'image/create', direct_url: "CODE HERE"
+	graphql result = 'image/create', direct_url: context.params.location
     
 	if result.record.id
 		redirect_to '/'
