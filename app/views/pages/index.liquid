@@ -3,6 +3,7 @@
 
 {% liquid
   graphql cards = 'card/search'
+  graphql uploaded_images = 'image/search'
 %}
 
 {% graphql data %}
@@ -72,3 +73,19 @@
         </tr>
     {% endfor %}
 </table>
+
+<!-- list of photos -->
+<ul>
+	{% for record in uploaded_images.records.results %}
+		<li>
+            <a href="{{ record.image.url }}">
+                <img src="{{ record.image.url }}" alt="" width="200px">
+            </a>
+		  {% comment %} <form action="/item/delete" method="post">
+		  	<input type="hidden" name="id" value="{{ item.id }}">
+			<button type="submit">Mark as done</button>
+		  </form> {% endcomment %}
+		</li>
+	  {% endfor %}
+	<li>
+</ul>

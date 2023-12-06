@@ -15,10 +15,6 @@ function uploadFile() {
 
             if (!xmlDocument.querySelector("Error")) {
                 const location = xmlDocument.querySelector("Location").textContent;
-                console.log(location);
-
-                //nie może być tak jak poniżej bo to metoda get, a ja chcę post
-                //window.location.href = `/app/views/pages/image/create.liquid?location=${location}`;
                 saveUrl(location);
             }
             else {
@@ -44,10 +40,9 @@ function saveUrl(location) {
         },
         body: JSON.stringify({ direct_url: location})
       })
-        .then(response => console.log(response))
-        /* .then(data => {
-          console.log('Response:', data);
-        }) */
+        .then(response => {
+          console.log(response);
+        })
         .catch(error => {
           console.error('Error:', error);
         });

@@ -1,0 +1,20 @@
+query image_search {
+  records: records(
+    per_page: 10
+    filter: {
+      table: { value: "images" }
+    }
+    sort: {
+      updated_at: { order: DESC }
+    }
+  ) {
+    total_entries
+    results {
+      id
+      image: property_upload(name: "image") {
+        url
+        versions
+      }
+    }
+  }
+}

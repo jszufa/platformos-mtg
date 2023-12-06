@@ -5,11 +5,11 @@ method: post
 
 {% liquid
 	graphql result = 'image/create', direct_url: context.params.direct_url
-    
-	if result.record.id
-		redirect_to '/'
-	else
-		echo 'Something went wrong'
-		echo result.errors
-	endif
 %}
+
+{% comment %} 
+	1. Jak przekazać coś w Response.body (np. id)?
+	2. Jak ustawić headers? Z jakiegoś powody response_headers mi nie działało.
+	3. Jak odświeżyć stronę po przekazaniu zdjęcia?
+
+{% endcomment %}
