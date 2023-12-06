@@ -1,9 +1,10 @@
 ---
+slug: image/create_record
 method: post
 ---
 
 {% liquid
-	graphql result = 'image/create', direct_url: context.params.location
+	graphql result = 'image/create', direct_url: context.params.direct_url
     
 	if result.record.id
 		redirect_to '/'

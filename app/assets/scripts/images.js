@@ -18,7 +18,8 @@ function uploadFile() {
                 console.log(location);
 
                 //nie może być tak jak poniżej bo to metoda get, a ja chcę post
-                window.location.href = `/app/views/pages/image/create.liquid?location=${location}`;
+                //window.location.href = `/app/views/pages/image/create.liquid?location=${location}`;
+                saveUrl(location);
             }
             else {
                 const errorMessage = xmlDocument.querySelector("Message").textContent;
@@ -31,17 +32,22 @@ function uploadFile() {
 }
 
 function saveUrl(location) {
-    fetch(`app\views\pages\image\create.liquid?location=${location}`, {
+    console.log("Save url initialized");
+
+    //w pliku liquid mogę definiować slug
+    fetch(`/image/create_record`, {
         method: 'POST',
+        vcredentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json' //??
         },
-        body: JSON.stringify({ key: 'value' }),
+        body: JSON.stringify({ direct_url: location})
       })
-        .then(response => response.json())
-        .then(data => {
+        .then(response => console.log(response))
+        /* .then(data => {
           console.log('Response:', data);
-        })
+        }) */
         .catch(error => {
           console.error('Error:', error);
         });
