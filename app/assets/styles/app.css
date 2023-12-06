@@ -1,5 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  text-align: center;
+  @apply font-serif;
+}
+
 body {
-  max-width: 800px;
   min-height: 100vh;
   margin-inline: auto;
 
@@ -7,26 +16,14 @@ body {
   flex-direction: column;
   align-items: center;
 
-  line-height: 1.7em;
-  font-family: sans-serif;
 }
 
-h1 {
-  text-align: center;
-}
 
-h2 {
-  text-align: center;
-}
 
 .logo {
   margin-top: 5rem;
-  text-align: center;
 }
 
-form {
-  text-align: center;
-}
 
 table {
   border: 1px solid black;
