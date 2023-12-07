@@ -12,13 +12,13 @@
     <div class="w-3/5 my-10 mx-auto text-gray-600">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum at voluptates hic! Repudiandae itaque laborum, qui natus fugiat obcaecati aperiam ipsum et laudantium asperiores optio in ea? Veniam, nesciunt consectetur.</p>
     </div>
-    <div class= "bg-indigo-900 rounded-lg justify-center m-auto w-4/5 flex shadow-lg">
+    <div class= "form-container">
         <!-- form for adding new card -->
         <form action="/card/create" method="post" class="p-5 ">
             <input class="add-card-input" type="text" name="name" id="name" placeholder="Card name" required>
             <input class="add-card-input" type="text" name="colors" id="colors" placeholder="Colors">
             <input class="add-card-input" type="text" name="types" id="types" placeholder="Types">
-            <button type="submit" class="bg-green-700 text-white p-3 uppercase font-normal font-sans m-3 rounded-md hover:opacity-80">Add card</button>
+            <button type="submit" class="submit-btn">Add card</button>
         </form>
     </div>
 
@@ -54,27 +54,36 @@
   }
 {% endgraphql %}
 
-<!-- form for adding new image -->
-<form id="uploadForm" action="{{ data.property_upload_presigned_url.upload_url }}" enctype="multipart/form-data" method="post">
-  {% for field in data.property_upload_presigned_url.upload_url_payload %}
-    <input type="hidden" name="{{ field[0] }}" value='{{ field[1] }}'>
-  {% endfor %}
-  <input id="file" name="file" type="file"/>
-  <button type="button" onclick="uploadFile()">Upload Image</button>
-</form>
+<section class="card-gallery my-14">
+    
+    <h2 class="text-xl mb-4">Create card gallery</h2>
+    <div class="w-3/5 my-10 mx-auto text-gray-600">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum at voluptates hic! Repudiandae itaque laborum, qui natus fugiat obcaecati aperiam ipsum et laudantium asperiores optio in ea? Veniam, nesciunt consectetur.</p>
+    </div>
 
-<!-- list of photos -->
-<ul>
-	{% for record in uploaded_images.records.results %}
-		<li>
-            <a href="{{ record.image.url }}">
-                <img src="{{ record.image.url }}" alt="" width="200px">
-            </a>
-		  {% comment %} <form action="/item/delete" method="post">
-		  	<input type="hidden" name="id" value="{{ item.id }}">
-			<button type="submit">Mark as done</button>
-		  </form> {% endcomment %}
-		</li>
-	  {% endfor %}
-	<li>
-</ul>
+    <!-- form for adding new image -->
+    <div class= "form-container mb-6">
+        <form id="uploadForm" action="{{ data.property_upload_presigned_url.upload_url }}" enctype="multipart/form-data" method="post" class="p-5">
+
+            {% for field in data.property_upload_presigned_url.upload_url_payload %}
+                <input type="hidden" name="{{ field[0] }}" value='{{ field[1] }}'>
+            {% endfor %}
+            <input id="file" name="file" type="file" class="file-input"/>
+            <button type="button" onclick="uploadFile()" class="submit-btn mx-2">Upload Image</button>
+
+        </form>
+    </div>
+
+    <!-- image gallery -->
+
+    <div class="w-4/5 m-auto grid grid-cols-2 md:grid-cols-4 gap-4 shadow-2xl p-3 border">
+        {% for record in uploaded_images.records.results %}
+            <div>
+                <a href="{{ record.image.url }}">
+                <img class="h-auto max-w-full rounded-lg" src="{{ record.image.url }}" alt="">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>

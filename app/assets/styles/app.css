@@ -19,6 +19,18 @@
     @apply py-3 px-5 border
   }
 
+  .form-container {
+    @apply bg-indigo-900 rounded-lg justify-center m-auto w-4/5 flex shadow-lg
+  }
+
+  .submit-btn {
+    @apply bg-green-700 text-white p-3 uppercase font-normal font-sans m-3 rounded-md hover:opacity-80
+  }
+
+  .file-input {
+    @apply file:bg-indigo-900 file:text-white file:border file:cursor-pointer file:rounded-md file:font-sans file:p-4 file:hover:bg-indigo-700 file:border-gray-100
+  }
+
 }
 
 
@@ -27,23 +39,4 @@
   background-color: rgb(130, 98, 98);
   width: 2em;
   margin: auto;
-}
-
-/* table.deck {
-  margin-top: 40px;
-  width: 100%;
-  border-collapse: collapse;
-}
- */
-
-/* table.deck tr {
-  border: 1px solid black;
-} */
-
-/* table.deck td {
-  padding: 5px;
-} */
-
-ul {
-  list-style: none;
 }
