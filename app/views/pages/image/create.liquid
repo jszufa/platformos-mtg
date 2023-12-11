@@ -5,12 +5,14 @@ method: post
 
 {% liquid
 	graphql result = 'image/create', direct_url: context.params.direct_url
+
 %}
+
+
 
 {% comment %} 
 	1. Jak przekazać coś w Response.body (np. id)?
 	2. Jak ustawić headers? Z jakiegoś powody response_headers mi nie działało.
-	3. Jak odświeżyć stronę po przekazaniu zdjęcia?
-	4. Dodać walidację, żeby nie dało się uploadować bez pliku.
-
+	3. Dodać walidację, żeby nie dało się uploadować bez pliku.
+	4. Dodawać zdjęcie przy dodawaniu karty do decku i wyświetlać miniaturkę.
 {% endcomment %}

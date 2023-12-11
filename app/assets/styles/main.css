@@ -622,6 +622,10 @@ video {
   background-color: rgb(67 56 202 / var(--tw-bg-opacity));
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .m-auto {
   margin: auto;
 }

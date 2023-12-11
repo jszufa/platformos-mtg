@@ -9,13 +9,14 @@ function uploadFile() {
         body: formData
     })
         .then(response => response.text())
-        .then(xmlResponse => {
+        .then(async xmlResponse => {
             //console.log('XML Response:', xmlResponse);
             const xmlDocument = new DOMParser().parseFromString(xmlResponse, "text/xml");
 
             if (!xmlDocument.querySelector("Error")) {
-                const location = xmlDocument.querySelector("Location").textContent;
-                saveUrl(location);
+                const imageUrl = xmlDocument.querySelector("Location").textContent;
+                await saveUrl(imageUrl);
+                //window.location.reload() //jak odświeżyć / zadzaiałać tak, żeby pojawiał się od razu zapisany obraz
             }
             else {
                 const errorMessage = xmlDocument.querySelector("Message").textContent;
@@ -27,9 +28,7 @@ function uploadFile() {
         });
 }
 
-function saveUrl(location) {
-    console.log("Save url initialized");
-
+async function saveUrl(imageUrl) {
     //w pliku liquid mogę definiować slug
     fetch(`/image/create_record`, {
         method: 'POST',
@@ -38,7 +37,7 @@ function saveUrl(location) {
           'Content-Type': 'application/json',
           Accept: 'application/json' //??
         },
-        body: JSON.stringify({ direct_url: location})
+        body: JSON.stringify({ direct_url: imageUrl})
       })
         .then(response => {
           console.log(response);
@@ -47,3 +46,13 @@ function saveUrl(location) {
           console.error('Error:', error);
         });
 }
+
+/* function saveUrl2(imageUrl) {
+  console.log("Saveurl2 initialized");
+  let imageUrlForm = document.getElementById('crete-image-record');
+  let imageUrlFormInput = document.getElementById('imageUrlInput');
+  
+  imageUrlFormInput.value = imageUrl;
+
+  imageUrlForm.submit();
+} */
